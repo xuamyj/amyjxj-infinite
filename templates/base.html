@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <link type="text/css" rel="stylesheet" href="/static/main.css" />
+  <title>amyjxj</title>
+</head>
+
+<body>
+  <a href="/list" class="main-title">
+    amyjxj
+  </a>
+
+  <div class="login-area">
+    {% if user %}
+      {{user.name}} (<a class="login-link" href="/logout">logout</a>)
+    {% else %}
+      <a class="login-link" href="/login">login</a>
+      |
+      <a class="login-link" href="signup">signup</a>
+    {% endif %}
+  </div>
+
+  <div id="content">
+    please signup or login to do things
+  </div>
+</body>
+
+</html>
