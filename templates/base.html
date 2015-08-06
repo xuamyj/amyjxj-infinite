@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
   <link type="text/css" rel="stylesheet" href="/static/main.css" />
-  <title>amyjxj</title>
+
+  <title>CS 253 Blog</title>
 </head>
 
 <body>
-  <a href="/list" class="main-title">
-    amyjxj
+  <a href="/blog" class="main-title">
+    CS 253 Blog
   </a>
 
   <div class="login-area">
@@ -18,13 +17,15 @@
     {% else %}
       <a class="login-link" href="/login">login</a>
       |
-      <a class="login-link" href="signup">signup</a>
+      <a class="login-link" href="/signup">signup</a>
     {% endif %}
   </div>
 
   <div id="content">
-    please signup or login to do things
+  {% block content %}
+  {% endblock %}
   </div>
 </body>
 
 </html>
+
