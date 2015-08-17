@@ -24,12 +24,16 @@ import hmac
 import logging
 import json
 from string import letters
-from userdb import User
 
 import webapp2
 import jinja2
 
 from google.appengine.ext import db
+from userdb import User
+from omletdb import Omlet
+from eaterdb import Eater
+from bitedb import Bite
+from dbtests import test_function
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
@@ -156,7 +160,8 @@ class Signup(BlogHandler):
 
 class MainPage(BlogHandler):
     def get(self):
-        self.write('Hello, what is my life...!')
+        self.write('Hello, what is my life...! ')
+        test_function(self)
 
 class Register(Signup):
     def done(self):
