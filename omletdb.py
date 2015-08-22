@@ -18,7 +18,7 @@ class Omlet(db.Model):
     # there should only be one omlet per name
     @classmethod
     def by_name(cls, name):
-        omlet = Omlet.all().filter('name = ', name).get()
+        omlet = Omlet.all().ancestor(omlets_key()).filter('name = ', name).get()
         return omlet
 
     # a single user can have multiple omlets,
@@ -26,7 +26,7 @@ class Omlet(db.Model):
     @classmethod
     def list_username(cls, user_name):
         user = User.by_name(user_name)
-        omlet_query = Omlet.all().filter('user_id =', user.key().id()).run()
+        omlet_query = Omlet.all().ancestor(omlets_key()).filter('user_id =', user.key().id()).run()
         return omlet_query
 
     # IMPORTANT: does not automatically put omlet in database.
@@ -41,5 +41,6 @@ class Omlet(db.Model):
         if omlet:
             print('Tried to make Omlet - Omlet already exists.')
             return None
-        return Omlet(name = name,
+        return Omlet(parent = user,
+                     name = name,
                      user_id = user.key().id())

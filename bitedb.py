@@ -48,7 +48,7 @@ class Bite(db.Model):
             print('Tried to find Bite - Omlet does not exist.')
             return None
         bite_query = Bite.all().filter('omlet_id = ', omlet.key().id()).order('number')
-        if max_number == None:
+        if not max_number:
             return bite_query.run()
         else:
             return bite_query.run(limit = max_number)
@@ -56,6 +56,7 @@ class Bite(db.Model):
 
     # set this omlet bite as eaten. once eaten, cannot be uneaten
     # (nothing in this app is deletable... for now. 8/17/15)
+    # this should be called in conjunction with Eater.set_latest_bite()
     @classmethod
     def set_eaten(cls, omlet_name, number):
         bite = Bite.by_omlet_number(omlet_name, number)
@@ -64,10 +65,11 @@ class Bite(db.Model):
 
     # by default, bites are numbered in the order they are added.
     # IMPORTANT: does not automatically put bite in database
+    # if omlet does not exist, returns None
     @classmethod
     def make_bite(cls, omlet_name, text):
         omlet = Omlet.by_name(omlet_name)
-        if omlet == None:
+        if not omlet:
             print('Tried to make Bite - Omlet does not exist.')
             return None
 
@@ -76,7 +78,8 @@ class Bite(db.Model):
         if latest_bite:
             next_number = latest_bite.number + 1;
 
-        return Bite(number = next_number,
+        return Bite(parent = bites_key(),
+                    number = next_number,
                     text = text,
                     eaten = False,
                     omlet_id = omlet.key().id())
