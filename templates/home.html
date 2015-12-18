@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{username}}</h1>
+
+<h2> omlets i made </h2>
+  {% if made_oms %}
+    {% for om in made_oms %}
+      <div class="om">
+        <a href="/home">{{om}}</a>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="message">
+      You haven't made any omlets yet.
+      <br>
+      <a href="/make">Make a new omlet</a>
+    </div>
+  {% endif %}
+
+<h2> omlets on my plate </h2>
+  {% if eaten_oms %}
+    {% for om in eaten_oms %}
+      <div class="om">
+        <a href="/home">{{om}}</a>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="message">
+      You haven't eaten any omlets yet.
+      <br>
+      <a href="/discover">Find one to eat</a>
+    </div>
+  {% endif %}
+
+{% endblock %}

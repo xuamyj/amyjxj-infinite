@@ -165,7 +165,18 @@ class MainPage(BlogHandler):
 
 class Home(BlogHandler):
     def get(self):
-        self.write("to be added to ")
+        made_omlets = ['made1', 'made2']
+        eaten_omlets = ['eaten1', 'eaten2']
+        self.render('home.html', username = self.user.name,
+            eaten_oms = eaten_omlets, made_oms = made_omlets)
+
+class Discover(BlogHandler):
+    def get(self):
+        self.write('DISCOVER')
+
+class Make(BlogHandler):
+    def get(self):
+        self.write('MAKE')
 
 class Register(Signup):
     def done(self):
@@ -215,5 +226,7 @@ app = webapp2.WSGIApplication([
     ('/login', Login),
     ('/logout', Logout),
     ('/welcome', Welcome),
-    ('/home', Home)
+    ('/home', Home),
+    ('/discover', Discover),
+    ('/make', Make)
 ], debug=True)
