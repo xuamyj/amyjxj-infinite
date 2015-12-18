@@ -1,2 +1,2 @@
 # amyjxj-infinite
-Trying things: Summer 2015
+Trying things: Winter 2015-16

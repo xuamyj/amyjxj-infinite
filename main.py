@@ -163,6 +163,10 @@ class MainPage(BlogHandler):
         self.write('Hello, what is my life...! ')
         # test_function(self)
 
+class Home(BlogHandler):
+    def get(self):
+        self.write("to be added to ")
+
 class Register(Signup):
     def done(self):
         #make sure the user doesn't already exist
@@ -203,7 +207,7 @@ class Welcome(BlogHandler):
         if self.user:
             self.render('welcome.html', username = self.user.name)
         else:
-            self.redirect('/signup')
+            self.redirect('/login')
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
@@ -211,4 +215,5 @@ app = webapp2.WSGIApplication([
     ('/login', Login),
     ('/logout', Logout),
     ('/welcome', Welcome),
+    ('/home', Home)
 ], debug=True)
