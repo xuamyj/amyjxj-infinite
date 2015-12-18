@@ -1,0 +1,19 @@
+<div class="omlet">
+  <div class="omlet-name">
+    {{omlet.name}}
+  </div>
+
+  <div class="omlet-description">
+    {{omlet.description._render_text | safe}}
+  </div>
+
+  {% if maker is true %}
+  <div class="omlet-created">
+    {{omlet.created.strftime("%b %d, %Y")}}
+  </div>
+  <div class="buttons">
+    <a href="/edit">Edit</a>
+    <a href="/delete">Delete</a>
+  </div>
+  {% endif %}
+</div>

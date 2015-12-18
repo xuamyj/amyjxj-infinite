@@ -8,6 +8,7 @@ def omlets_key(group = 'default'):
 
 class Omlet(db.Model):
     name = db.StringProperty(required = True)
+    description = db.TextProperty()
     user_id = db.IntegerProperty(required = True)
     created = db.DateTimeProperty(auto_now_add = True)
 

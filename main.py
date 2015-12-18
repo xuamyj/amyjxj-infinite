@@ -161,7 +161,7 @@ class Signup(BlogHandler):
 class MainPage(BlogHandler):
     def get(self):
         self.write('Hello, what is my life...! ')
-        test_function(self)
+        # test_function(self)
 
 class Register(Signup):
     def done(self):
