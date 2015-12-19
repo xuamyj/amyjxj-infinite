@@ -167,8 +167,9 @@ class Home(BlogHandler):
     def get(self):
         made_omlets = ['made1', 'made2']
         eaten_omlets = ['eaten1', 'eaten2']
+        annas_list = ['potato1', 'potato2', 'potato3']
         self.render('home.html', username = self.user.name,
-            eaten_oms = eaten_omlets, made_oms = made_omlets)
+            eaten_oms = eaten_omlets, made_oms = made_omlets, potatoes = annas_list)
 
 class Discover(BlogHandler):
     def get(self):

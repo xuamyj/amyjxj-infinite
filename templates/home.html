@@ -34,4 +34,22 @@
     </div>
   {% endif %}
 
+<h2> yay potatoes </h2>
+  {% if potatoes %}
+    {% for potato in potatoes %}
+      <div class="potato">
+        <a href="/home">{{potato}}</a>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="message">
+      You haven't made a potatoes yet.
+      <br>
+      <a href="/make">Make a new potato</a>
+    </div>
+  {% endif %}
+
+  POTATO
+
+
 {% endblock %}
