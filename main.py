@@ -165,7 +165,7 @@ class MainPage(BlogHandler):
 
 class Home(BlogHandler):
     def get(self):
-        made_omlets = ['made1', 'made2']
+        made_omlets = []
         eaten_omlets = ['eaten1', 'eaten2']
         annas_list = ['potato1', 'potato2', 'potato3']
         self.render('home.html', username = self.user.name,
@@ -177,7 +177,8 @@ class Discover(BlogHandler):
 
 class Make(BlogHandler):
     def get(self):
-        self.write('MAKE')
+        self.render('make.html')
+
 
 class Register(Signup):
     def done(self):
