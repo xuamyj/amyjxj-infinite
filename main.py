@@ -165,19 +165,29 @@ class MainPage(BlogHandler):
 
 class Home(BlogHandler):
     def get(self):
-        made_omlets = []
-        eaten_omlets = ['eaten1', 'eaten2']
-        annas_list = ['potato1', 'potato2', 'potato3']
-        self.render('home.html', username = self.user.name,
-            eaten_oms = eaten_omlets, made_oms = made_omlets, potatoes = annas_list)
+        if self.user:
+            made_omlets = []
+            eaten_omlets = ['eaten1', 'eaten2']
+            annas_list = ['potato1', 'potato2', 'potato3']
+            self.render('home.html', username = self.user.name,
+                eaten_oms = eaten_omlets, made_oms = made_omlets, potatoes = annas_list)
+        else:
+            self.redirect('/login')
+        
 
 class Discover(BlogHandler):
     def get(self):
-        self.write('DISCOVER')
+        if self.user:
+            self.write('DISCOVER')
+        else:
+            self.redirect('/login')
 
 class Make(BlogHandler):
     def get(self):
-        self.render('make.html')
+        if self.user:
+            self.render('make.html')
+        else:
+            self.redirect('/login')
 
 
 class Register(Signup):
